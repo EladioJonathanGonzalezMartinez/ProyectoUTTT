@@ -78,11 +78,16 @@ namespace UTTT.Ejemplo.Persona
                     {
                        
                         this.lblAccion.Text = "Editar";
+                        ddlSexo.Enabled = true;
+                        this.setItem(ref this.ddlSexo, baseEntity.CatSexo.strValor);
                         this.txtNombre.Text = this.baseEntity.strNombre;
                         this.txtAPaterno.Text = this.baseEntity.strAPaterno;
                         this.txtAMaterno.Text = this.baseEntity.strAMaterno;
                         this.txtClaveUnica.Text = this.baseEntity.strClaveUnica;
-                        this.setItem(ref this.ddlSexo, baseEntity.CatSexo.strValor);
+                        DateTime? fn = this.baseEntity.dteFecha;
+                        this.txtFecha.Text = fn.ToString();
+                        this.Calendar1.SelectedDate = (DateTime)fn;
+                        this.Calendar1.TodaysDate = (DateTime)fn;
                         this.txtCorreoE.Text = this.baseEntity.strCorreoE;
                         this.txtCodP.Text = this.baseEntity.strCodigoP;
                         this.txtRFC.Text = this.baseEntity.strRFC;
@@ -475,6 +480,7 @@ namespace UTTT.Ejemplo.Persona
            
         }
 
+
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             txtFecha.Text = Calendar1.SelectedDate.ToString("dd/MM/yyyy");
@@ -507,6 +513,8 @@ namespace UTTT.Ejemplo.Persona
             }
             return respuesta;
         }
+        
+        
         //fallo
         protected void btn1_Click(object sender, EventArgs e)
         {
